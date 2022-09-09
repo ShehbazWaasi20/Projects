@@ -1,0 +1,89 @@
+addevent listners
+
+keyup : event occurs when the key is released.
+keydown : event occurs when the key is pressing.
+
+added a object name "keys"
+
+window.requestAnimationFrame() - in one method we can do multiple loops.
+
+when we click on the startscreen the game should start.
+
+To get continuous animation add a window.requestAnimationFrame(gameplay) as a callback function in the same function gameplay.
+
+create an empty object player , for assurity weather he wanted to start a game or not. 
+in start function add player.start = true , in gameplay() if player.start=true then add a callback window.requestAnimationFrame(gameplay)
+
+when we click on startscreem
+startScreen.classList.add("hide");
+gameArea.classList.remove("hide");
+
+let car = document.createElement("div");
+car.setAttribute('class' , 'car');
+car.innerText = "Hey i am your car";
+gameArea.appendChild(car)
+
+
+instead of text "Hey i am your car" , we need a car.
+
+
+we a property in javascript to get the value of position - car.offsetLeft , offsetTop
+
+
+change the position on click
+if(keys.ArrowUp){player.y += player.speed}
+if(keys.ArrowDown){player.y -= player.speed}
+if(keys.ArrowLeft){player.x -= player.speed}
+if(keys.ArrowRight){player.x += player.speed}
+
+
+we are this position to our class div
+car.style.bottom = player.y + "px";
+car.style.left = player.x + "px";
+
+
+add style to the gameArea
+
+
+Day 4
+create lines animation , generate cars at random positions and move the positions , whenever your car collide with another then gameover ,
+show the score.
+
+create a function called moveLines and access all lines using querySelectorAll.
+
+in javascript everything is an object.
+
+
+function moveLines(){
+        let lines = document.querySelectorAll('.lines')
+
+        lines.forEach(function(item){
+            item.y += player.speed;
+            item.style.top = item.y + "px"
+        })
+}
+
+lines loop occurs, only once
+if(item.y>=700){
+            item.y -= 750;
+}
+
+above statment is used for continuous loop
+
+create a enemy car
+for(let x=0; x<4; x++){
+    let enemyCar = document.createElement("div");
+    enemyCar.setAttribute('class', 'enemy');
+    enemyCar.y = (x*150)
+    enemyCar.style.top = enemyCar.y + "px";
+    gameArea.appendChild(enemyCar);
+}
+and add same style as your car.
+
+
+change style of enemyCar
+enemyCar.style.background = "blue"
+
+show enemycars at different positions
+enemyCar.style.left = Math.floor(Math.random()*350) + "px"
+
